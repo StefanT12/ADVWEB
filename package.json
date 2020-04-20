@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "cd server && node app.js",
+    "stop": "cd server && node server.stop.js",
     "dev": "cd client && npm start",
     "test": "cd client && npm test",
     "preinstall": "cd server && npm install",

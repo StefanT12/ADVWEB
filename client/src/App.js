@@ -5,7 +5,7 @@ import Questions from "./Questions";
 
 class App extends Component {
   
-  API_URL = process.env.NODE_ENV === 'production' ? 'https://mern-webadv.herokuapp.com' : process.env.REACT_APP_DEV_API_URL;
+  API_URL = process.env.REACT_APP_API_URL;
   constructor(props) {
     super(props);
     this.state = {
@@ -78,16 +78,12 @@ class App extends Component {
       }),
       headers: this.state.header
     })
-    .then(function (response) {
-      if (!response.ok) {
-         return response.text().then(result => Promise.reject(new Error(result)));
-      }
-  
-      return response.json();
-      })
-      .then(json => {
-        this.getData();
-      });
+    .then(response => response.json())
+    .then(json => {
+      console.log("Result of posting a new question:");
+      console.log(json);
+      this.getData();
+    });
   }
 
 
